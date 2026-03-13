@@ -1,0 +1,160 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+
+const categoryMeta: Record<string, { title: string; description: string; emoji: string }> = {
+	desks: {
+		title: 'Best Desks for Home Office',
+		description: 'Standing desks, sit-stand desks, and workspace solutions reviewed and compared.',
+		emoji: '🖥️',
+	},
+	chairs: {
+		title: 'Best Office Chairs',
+		description: 'Ergonomic chairs for every budget. From $150 to $1,500 — honest reviews only.',
+		emoji: '🪑',
+	},
+	accessories: {
+		title: 'Desk Accessories & Gear',
+		description: 'Keyboards, monitors, desk mats, cable management, and everything else for your setup.',
+		emoji: '⌨️',
+	},
+};
+
+export function getStaticPaths() {
+	return [
+		{ params: { category: 'desks' } },
+		{ params: { category: 'chairs' } },
+		{ params: { category: 'accessories' } },
+	];
+}
+
+const { category } = Astro.params;
+const meta = categoryMeta[category!] || { title: category, description: '', emoji: '' };
+
+const allPosts = await getCollection('blog');
+const posts = allPosts
+	.filter((post) => post.data.category === category)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${meta.title} — Deskbly`} description={meta.description} />
+		<style>
+			.category-header {
+				text-align: center;
+				padding: 2em 0;
+			}
+			.category-header .emoji {
+				font-size: 3em;
+				display: block;
+				margin-bottom: 0.3em;
+			}
+			.category-header p {
+				color: rgb(var(--gray));
+				max-width: 600px;
+				margin: 0.5em auto 0;
+			}
+			.posts-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.posts-list li {
+				display: flex;
+				gap: 1.5em;
+				padding: 1.5em 0;
+				border-bottom: 1px solid rgb(var(--gray-light));
+			}
+			.posts-list li:last-child {
+				border-bottom: none;
+			}
+			.posts-list a {
+				display: flex;
+				gap: 1.5em;
+				text-decoration: none;
+				color: inherit;
+				width: 100%;
+			}
+			.posts-list img {
+				width: 240px;
+				height: 140px;
+				object-fit: cover;
+				border-radius: 8px;
+				flex-shrink: 0;
+			}
+			.post-content h3 {
+				margin: 0 0 0.3em 0;
+				font-size: 1.2em;
+				color: rgb(var(--black));
+			}
+			.post-content .date {
+				font-size: 0.85em;
+				color: rgb(var(--gray));
+				margin-bottom: 0.3em;
+			}
+			.post-content p {
+				font-size: 0.9em;
+				color: rgb(var(--gray-dark));
+				margin: 0;
+			}
+			.posts-list a:hover h3 {
+				color: var(--accent);
+			}
+			.empty {
+				text-align: center;
+				padding: 3em;
+				color: rgb(var(--gray));
+			}
+			@media (max-width: 720px) {
+				.posts-list a {
+					flex-direction: column;
+					gap: 0.8em;
+				}
+				.posts-list img {
+					width: 100%;
+					height: 200px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="category-header">
+				<span class="emoji">{meta.emoji}</span>
+				<h1>{meta.title}</h1>
+				<p>{meta.description}</p>
+			</section>
+
+			{posts.length > 0 ? (
+				<ul class="posts-list">
+					{posts.map((post) => (
+						<li>
+							<a href={`/blog/${post.id}/`}>
+								{post.data.heroImage && (
+									<Image width={480} height={280} src={post.data.heroImage} alt={post.data.title} />
+								)}
+								<div class="post-content">
+									<h3>{post.data.title}</h3>
+									<p class="date"><FormattedDate date={post.data.pubDate} /></p>
+									<p>{post.data.description}</p>
+								</div>
+							</a>
+						</li>
+					))}
+				</ul>
+			) : (
+				<div class="empty">
+					<p>No articles in this category yet. Check back soon!</p>
+				</div>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>

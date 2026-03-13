@@ -3,6 +3,7 @@ title: "5 Best Ergonomic Office Chairs for Home Office (2026)"
 description: "Your chair matters more than your desk. Here are the 5 best ergonomic chairs across every budget."
 pubDate: 'Mar 12 2026'
 heroImage: '../../assets/blog-placeholder-2.jpg'
+category: 'chairs'
 ---
 
 If you work from home, your chair is the single most important purchase you'll make. A bad chair will wreck your back in 6 months. A good one lasts a decade.

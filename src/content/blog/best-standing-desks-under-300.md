@@ -3,6 +3,7 @@ title: "7 Best Standing Desks Under $300 in 2026"
 description: "We compared the top budget standing desks so you don't have to. Here are the 7 that are actually worth buying."
 pubDate: 'Mar 13 2026'
 heroImage: '../../assets/blog-placeholder-1.jpg'
+category: 'desks'
 ---
 
 Standing desks used to cost $800+. Not anymore. The budget market has exploded, and there are now genuinely good electric standing desks under $300.
