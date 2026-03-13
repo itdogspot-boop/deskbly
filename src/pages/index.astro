@@ -1,0 +1,63 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${SITE_TITLE} — Best Home Office Desks, Chairs & Setup Guides`} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<h1>Your Desk. Done Right.</h1>
+				<p>Honest reviews, no fluff buying guides, and setup ideas for your home office. We test the gear so you don't waste money.</p>
+				<a href="/blog" class="cta">Browse Reviews →</a>
+			</section>
+
+			<section class="categories">
+				<a href="/blog">🪑 Chairs</a>
+				<a href="/blog">🖥️ Desks</a>
+				<a href="/blog">⌨️ Accessories</a>
+				<a href="/blog">💡 Setup Ideas</a>
+				<a href="/blog">💰 Budget Picks</a>
+			</section>
+
+			<section>
+				<h2>Latest Reviews</h2>
+				<ul class="post-grid">
+					{posts.map((post) => (
+						<li>
+							<a href={`/blog/${post.id}/`}>
+								{post.data.heroImage && (
+									<img src={post.data.heroImage.src} alt={post.data.title} />
+								)}
+								<div class="post-info">
+									<h4>{post.data.title}</h4>
+									<p class="date">
+										{post.data.pubDate.toLocaleDateString('en-us', {
+											year: 'numeric',
+											month: 'short',
+											day: 'numeric',
+										})}
+									</p>
+									<p>{post.data.description}</p>
+								</div>
+							</a>
+						</li>
+					))}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

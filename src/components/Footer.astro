@@ -1,0 +1,24 @@
+---
+const today = new Date();
+---
+
+<footer>
+	<p>
+		&copy; {today.getFullYear()} Deskbly. All rights reserved.
+		<br />
+		<span class="disclosure">Some links on this site are affiliate links. We may earn a commission at no extra cost to you.</span>
+	</p>
+</footer>
+<style>
+	footer {
+		padding: 2em 1em;
+		background: rgba(var(--gray-light), 0.5);
+		text-align: center;
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+	}
+	.disclosure {
+		font-size: 0.9em;
+		font-style: italic;
+	}
+</style>
