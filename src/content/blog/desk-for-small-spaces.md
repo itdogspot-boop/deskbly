@@ -2,7 +2,7 @@
 title: "Best Compact Desks for Small Apartments (2026)"
 description: "Living in a small space doesn't mean sacrificing a good workspace. Here are the best compact desks that maximize your room."
 pubDate: "Mar 09 2026"
-heroImage: "https://images.unsplash.com/photo-1611269154421-4e27233ac5c7?w=800&q=80"
+heroImage: "/images/blog-placeholder-1.jpg"
 category: "desks"
 ---
 

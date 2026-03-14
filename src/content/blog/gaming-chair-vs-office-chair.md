@@ -2,7 +2,7 @@
 title: "Gaming Chair vs Office Chair: Which is Better for Work?"
 description: "Gaming chairs look cool, but are they actually good for working? We break down the differences and help you choose."
 pubDate: "Mar 07 2026"
-heroImage: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=800&q=80"
+heroImage: "/images/blog-placeholder-1.jpg"
 category: "chairs"
 ---
 
