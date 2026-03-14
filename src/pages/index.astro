@@ -141,7 +141,7 @@ const posts = allPosts.slice(0, 6); // Only show 6 articles
 				<div class="cta-content">
 					<h2>📬 Get the Best Deals</h2>
 					<p>Subscribe to get the latest reviews and exclusive deals delivered to your inbox.</p>
-					<form class="cta-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+					<form class="cta-form" id="newsletter-form" onsubmit="event.preventDefault(); document.getElementById('newsletter-form').innerHTML = '<div class=\"subscribed-message\"><span>✓</span> Thanks for subscribing!</div>';">
 						<input type="email" placeholder="Enter your email" required />
 						<button type="submit">Subscribe</button>
 					</form>
@@ -499,6 +499,20 @@ const posts = allPosts.slice(0, 6); // Only show 6 articles
 	}
 	.cta-form button:hover {
 		background: #7dd3fc;
+	}
+	.subscribed-message {
+		background: #22c55e;
+		color: white;
+		padding: 1em 2em;
+		border-radius: 10px;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5em;
+	}
+	.subscribed-message span {
+		font-size: 1.2em;
 	}
 
 	/* CTA Section */
