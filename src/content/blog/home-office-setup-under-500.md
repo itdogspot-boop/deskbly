@@ -2,7 +2,7 @@
 title: "Complete Home Office Setup Under $500 (2026 Guide)"
 description: "You don't need $2,000 to build a great home office. Here's exactly what to buy with $500 - every dollar accounted for."
 pubDate: "Mar 11 2026"
-heroImage: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=1200&q=80"
+heroImage: "../../assets/blog-placeholder-3.jpg"
 category: "accessories"
 ---
 
