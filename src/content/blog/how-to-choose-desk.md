@@ -2,7 +2,7 @@
 title: "How to Choose the Right Desk for Your Needs (2026)"
 description: "Not sure what desk you need? This guide breaks down everything to consider when buying a desk for your home office."
 pubDate: "Mar 03 2026"
-heroImage: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800"
+heroImage: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800"
 category: "desks"
 ---
 
