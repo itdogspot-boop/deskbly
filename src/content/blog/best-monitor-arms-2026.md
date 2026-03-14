@@ -2,7 +2,7 @@
 title: "Best Monitor Arms for Home Office (2026)"
 description: "Free up desk space and improve your posture with a monitor arm. Here are the best monitor arms."
 pubDate: "Mar 06 2026"
-heroImage: "../../assets/blog-placeholder-1.jpg"
+heroImage: "/images/blog-placeholder-1.jpg"
 category: "accessories"
 ---
 

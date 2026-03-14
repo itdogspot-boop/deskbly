@@ -2,7 +2,7 @@
 title: "How to Set Up an Ergonomic Workstation (2026)"
 description: "Your chair and desk are just the start. Here's how to set up a complete ergonomic workstation that protects your body."
 pubDate: "Mar 01 2026"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "/images/blog-placeholder-3.jpg"
 category: "chairs"
 ---
 
