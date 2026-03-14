@@ -7,9 +7,10 @@ import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
 
-const posts = (await getCollection('blog')).sort(
+const allPosts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+const posts = allPosts.slice(0, 6); // Only show 6 articles
 ---
 
 <!doctype html>
@@ -24,11 +25,26 @@ const posts = (await getCollection('blog')).sort(
 		<section class="hero-banner">
 			<div class="hero-overlay"></div>
 			<div class="hero-content">
-				<h1>Your Desk. Done Right.</h1>
+				<span class="hero-badge">🚀 Updated for 2026</span>
+				<h1>Your Desk. <br/>Done Right.</h1>
 				<p>Honest reviews, no fluff buying guides, and setup ideas for your home office. We test the gear so you don't waste money.</p>
 				<div class="hero-buttons">
-					<a href="/blog" class="btn btn-primary">Browse Reviews</a>
+					<a href="/blog" class="btn btn-primary">Browse All Reviews</a>
 					<a href="/about" class="btn btn-outline">About Us</a>
+				</div>
+				<div class="hero-stats">
+					<div class="stat">
+						<span class="stat-num">{allPosts.length}+</span>
+						<span class="stat-label">Reviews</span>
+					</div>
+					<div class="stat">
+						<span class="stat-num">3</span>
+						<span class="stat-label">Categories</span>
+					</div>
+					<div class="stat">
+						<span class="stat-num">$2K</span>
+						<span class="stat-label">Tested</span>
+					</div>
 				</div>
 			</div>
 		</section>
@@ -36,7 +52,10 @@ const posts = (await getCollection('blog')).sort(
 		<main>
 			<!-- Categories -->
 			<section class="home-categories">
-				<h2>Browse by Category</h2>
+				<div class="section-header">
+					<h2>Browse by Category</h2>
+					<p>Find exactly what you need for your home office</p>
+				</div>
 				<div class="category-grid">
 					<a href="/category/desks" class="cat-card">
 						<span class="cat-icon">🖥️</span>
@@ -59,9 +78,45 @@ const posts = (await getCollection('blog')).sort(
 				</div>
 			</section>
 
+			<!-- Featured Articles -->
+			<section class="featured-section">
+				<div class="section-header">
+					<h2>Latest Reviews</h2>
+					<p>The most up-to-date buying guides for your home office</p>
+				</div>
+				<div class="featured-grid">
+					{posts.map((post, index) => (
+						<article class={`featured-card ${index === 0 ? 'featured-main' : ''}`}>
+							<a href={`/blog/${post.id}/`}>
+								<div class="card-image">
+									{post.data.heroImage && (
+										<img src={post.data.heroImage} alt={post.data.title} />
+									)}
+									<span class="card-category">{post.data.category || 'review'}</span>
+								</div>
+								<div class="card-content">
+									<h3>{post.data.title}</h3>
+									<p class="card-desc">{post.data.description}</p>
+									<div class="card-meta">
+										<span class="card-date"><FormattedDate date={post.data.pubDate} /></span>
+										<span class="card-read">Read More →</span>
+									</div>
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+				<div class="view-all-wrapper">
+					<a href="/blog" class="view-all-btn">View All {allPosts.length} Reviews →</a>
+				</div>
+			</section>
+
 			<!-- Why Choose Us -->
 			<section class="why-section">
-				<h2>Why Trust Deskbly?</h2>
+				<div class="section-header">
+					<h2>Why Trust Deskbly?</h2>
+					<p>We're different from other review sites</p>
+				</div>
 				<div class="why-grid">
 					<div class="why-card">
 						<span class="why-icon">🔍</span>
@@ -81,31 +136,16 @@ const posts = (await getCollection('blog')).sort(
 				</div>
 			</section>
 
-			<!-- Latest Reviews -->
-			<section class="latest-section">
-				<div class="section-header">
-					<h2>Latest Reviews</h2>
-					<a href="/blog" class="view-all">View All →</a>
+			<!-- Newsletter CTA -->
+			<section class="newsletter-cta">
+				<div class="cta-content">
+					<h2>📬 Get the Best Deals</h2>
+					<p>Subscribe to get the latest reviews and exclusive deals delivered to your inbox.</p>
+					<form class="cta-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+						<input type="email" placeholder="Enter your email" required />
+						<button type="submit">Subscribe</button>
+					</form>
 				</div>
-				<ul class="post-grid">
-					{posts.map((post) => (
-						<li>
-							<a href={`/blog/${post.id}/`}>
-								{post.data.heroImage && (
-									<Image width={560} height={280} src={post.data.heroImage} alt={post.data.title} />
-								)}
-								<div class="post-info">
-									<span class="category-tag">{post.data.category || 'review'}</span>
-									<h4>{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-									<p class="desc">{post.data.description}</p>
-								</div>
-							</a>
-						</li>
-					))}
-				</ul>
 			</section>
 
 			<!-- CTA Section -->
@@ -123,42 +163,58 @@ const posts = (await getCollection('blog')).sort(
 	/* Hero */
 	.hero-banner {
 		position: relative;
-		height: 520px;
+		min-height: 580px;
 		background-image: url('https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1920&q=80');
 		background-size: cover;
 		background-position: center;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		text-align: center;
 	}
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.65) 100%);
+		background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.75) 50%, rgba(15, 23, 42, 0.6) 100%);
 	}
 	.hero-content {
 		position: relative;
 		z-index: 1;
-		max-width: 750px;
-		padding: 2em;
+		max-width: 800px;
+		padding: 3em 2em;
+		text-align: center;
+	}
+	.hero-badge {
+		display: inline-block;
+		background: rgba(56, 189, 248, 0.2);
+		color: #38bdf8;
+		padding: 0.4em 1em;
+		border-radius: 999px;
+		font-size: 0.85em;
+		font-weight: 600;
+		margin-bottom: 1em;
+		border: 1px solid rgba(56, 189, 248, 0.3);
 	}
 	.hero-content h1 {
 		color: white;
-		font-size: 3.5em;
-		margin-bottom: 0.4em;
-		letter-spacing: -0.02em;
+		font-size: 4em;
+		margin-bottom: 0.3em;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
 	}
 	.hero-content p {
-		color: rgba(255, 255, 255, 0.85);
-		font-size: 1.25em;
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 1.3em;
 		margin-bottom: 1.8em;
 		line-height: 1.6;
+		max-width: 600px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.hero-buttons {
 		display: flex;
 		gap: 1em;
 		justify-content: center;
+		margin-bottom: 2.5em;
 	}
 	.btn {
 		display: inline-flex;
@@ -168,7 +224,7 @@ const posts = (await getCollection('blog')).sort(
 		font-weight: 700;
 		text-decoration: none;
 		font-size: 1.05em;
-		transition: all 0.2s;
+		transition: all 0.25s;
 	}
 	.btn-primary {
 		background: #38bdf8;
@@ -177,24 +233,53 @@ const posts = (await getCollection('blog')).sort(
 	.btn-primary:hover {
 		background: #7dd3fc;
 		transform: translateY(-2px);
+		box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
 	}
 	.btn-outline {
 		background: transparent;
 		color: white !important;
-		border: 2px solid rgba(255, 255, 255, 0.5);
+		border: 2px solid rgba(255, 255, 255, 0.4);
 	}
 	.btn-outline:hover {
 		border-color: white;
 		background: rgba(255, 255, 255, 0.1);
 	}
+	.hero-stats {
+		display: flex;
+		justify-content: center;
+		gap: 3em;
+	}
+	.stat {
+		text-align: center;
+	}
+	.stat-num {
+		display: block;
+		font-size: 2em;
+		font-weight: 800;
+		color: #38bdf8;
+	}
+	.stat-label {
+		font-size: 0.85em;
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	/* Section Headers */
+	.section-header {
+		text-align: center;
+		margin-bottom: 2.5em;
+	}
+	.section-header h2 {
+		font-size: 2em;
+		margin-bottom: 0.3em;
+	}
+	.section-header p {
+		color: #64748b;
+		font-size: 1.1em;
+	}
 
 	/* Categories */
 	.home-categories {
-		padding: 3em 0;
-	}
-	.home-categories h2 {
-		text-align: center;
-		margin-bottom: 1.5em;
+		padding: 4em 1em;
 	}
 	.category-grid {
 		display: grid;
@@ -202,35 +287,34 @@ const posts = (await getCollection('blog')).sort(
 		gap: 1.5em;
 		max-width: 1000px;
 		margin: 0 auto;
-		padding: 0 1em;
 	}
 	.cat-card {
 		background: white;
 		border: 1px solid #e2e8f0;
-		border-radius: 16px;
-		padding: 1.8em 1.5em;
+		border-radius: 20px;
+		padding: 2em 1.5em;
 		text-decoration: none;
 		color: inherit;
-		transition: all 0.25s;
+		transition: all 0.3s;
 		text-align: center;
 	}
 	.cat-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+		transform: translateY(-6px);
+		box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
 		border-color: #38bdf8;
 	}
 	.cat-icon {
-		font-size: 2.5em;
+		font-size: 3em;
 		display: block;
 		margin-bottom: 0.5em;
 	}
 	.cat-card h3 {
 		margin: 0 0 0.5em 0;
-		font-size: 1.3em;
+		font-size: 1.35em;
 	}
 	.cat-card p {
 		color: #64748b;
-		font-size: 0.9em;
+		font-size: 0.95em;
 		margin: 0 0 1em 0;
 		line-height: 1.5;
 	}
@@ -240,15 +324,109 @@ const posts = (await getCollection('blog')).sort(
 		font-size: 0.9em;
 	}
 
+	/* Featured Section */
+	.featured-section {
+		padding: 2em 1em 4em;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+	.featured-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5em;
+	}
+	.featured-card {
+		background: white;
+		border-radius: 16px;
+		overflow: hidden;
+		box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+		transition: all 0.3s;
+		border: 1px solid #e2e8f0;
+	}
+	.featured-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+	}
+	.featured-card a {
+		text-decoration: none;
+		color: inherit;
+	}
+	.card-image {
+		position: relative;
+		height: 180px;
+		overflow: hidden;
+	}
+	.card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.card-category {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		background: rgba(15, 23, 42, 0.85);
+		color: white;
+		padding: 0.3em 0.8em;
+		border-radius: 6px;
+		font-size: 0.75em;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+	.card-content {
+		padding: 1.2em;
+	}
+	.card-content h3 {
+		font-size: 1.05em;
+		margin: 0 0 0.5em 0;
+		line-height: 1.4;
+	}
+	.card-desc {
+		color: #64748b;
+		font-size: 0.85em;
+		margin: 0 0 1em 0;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.card-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 0.8em;
+	}
+	.card-date {
+		color: #94a3b8;
+	}
+	.card-read {
+		color: #38bdf8;
+		font-weight: 600;
+	}
+	.view-all-wrapper {
+		text-align: center;
+		margin-top: 2em;
+	}
+	.view-all-btn {
+		display: inline-block;
+		padding: 0.8em 2em;
+		background: #0f172a;
+		color: white !important;
+		text-decoration: none;
+		border-radius: 10px;
+		font-weight: 600;
+		transition: all 0.2s;
+	}
+	.view-all-btn:hover {
+		background: #1e293b;
+		transform: translateY(-2px);
+	}
+
 	/* Why Section */
 	.why-section {
-		background: #f1f5f9;
-		padding: 3.5em 1em;
-		margin: 2em 0;
-	}
-	.why-section h2 {
-		text-align: center;
-		margin-bottom: 2em;
+		background: #f8fafc;
+		padding: 4em 1em;
 	}
 	.why-grid {
 		display: grid;
@@ -259,6 +437,10 @@ const posts = (await getCollection('blog')).sort(
 	}
 	.why-card {
 		text-align: center;
+		background: white;
+		padding: 2em;
+		border-radius: 16px;
+		border: 1px solid #e2e8f0;
 	}
 	.why-icon {
 		font-size: 2.5em;
@@ -276,37 +458,56 @@ const posts = (await getCollection('blog')).sort(
 		line-height: 1.5;
 	}
 
-	/* Latest Section */
-	.latest-section {
-		padding: 2em 0;
+	/* Newsletter CTA */
+	.newsletter-cta {
+		padding: 4em 1em;
+		background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
 	}
-	.section-header {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+	.cta-content {
+		max-width: 500px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.cta-content h2 {
+		color: white;
+		margin-bottom: 0.5em;
+	}
+	.cta-content p {
+		color: rgba(255, 255, 255, 0.7);
 		margin-bottom: 1.5em;
-		padding: 0 1em;
 	}
-	.section-header h2 {
-		margin: 0;
+	.cta-form {
+		display: flex;
+		gap: 0.5em;
 	}
-	.view-all {
-		color: #38bdf8;
-		font-weight: 600;
-		text-decoration: none;
+	.cta-form input {
+		flex: 1;
+		padding: 0.8em 1em;
+		border: none;
+		border-radius: 10px;
+		font-size: 1em;
 	}
-	.view-all:hover {
-		color: #0ea5e9;
+	.cta-form button {
+		padding: 0.8em 1.5em;
+		background: #38bdf8;
+		color: #0f172a;
+		border: none;
+		border-radius: 10px;
+		font-weight: 700;
+		cursor: pointer;
+		transition: background 0.2s;
+	}
+	.cta-form button:hover {
+		background: #7dd3fc;
 	}
 
 	/* CTA Section */
 	.cta-section {
-		background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+		background: #0f172a;
 		color: white;
 		text-align: center;
 		padding: 4em 2em;
-		margin: 3em 0 0 0;
-		border-radius: 20px;
+		margin-top: 4em;
 	}
 	.cta-section h2 {
 		color: white;
@@ -319,21 +520,15 @@ const posts = (await getCollection('blog')).sort(
 	}
 
 	/* Responsive */
-	@media (max-width: 800px) {
-		.hero-banner {
-			height: 450px;
-		}
-		.hero-content h1 {
-			font-size: 2.5em;
-		}
-		.hero-content p {
-			font-size: 1.1em;
-		}
-		.category-grid, .why-grid {
-			grid-template-columns: 1fr;
-		}
-		.hero-buttons {
-			flex-direction: column;
-		}
+	@media (max-width: 900px) {
+		.hero-content h1 { font-size: 3em; }
+		.category-grid, .featured-grid, .why-grid { grid-template-columns: 1fr; }
+		.hero-stats { gap: 2em; }
+	}
+	@media (max-width: 600px) {
+		.hero-content h1 { font-size: 2.2em; }
+		.hero-content p { font-size: 1.1em; }
+		.hero-buttons { flex-direction: column; }
+		.cta-form { flex-direction: column; }
 	}
 </style>
