@@ -42,7 +42,7 @@ const posts = (await getCollection('blog')).sort(
 									<Image width={560} height={280} src={post.data.heroImage} alt={post.data.title} />
 								)}
 								<div class="post-info">
-									<span class="category-tag">{post.data.category || 'general'}</span>
+									<span class="category-tag">{post.data.category || 'review'}</span>
 									<h4>{post.data.title}</h4>
 									<p class="date">
 										<FormattedDate date={post.data.pubDate} />
@@ -58,23 +58,3 @@ const posts = (await getCollection('blog')).sort(
 		<Footer />
 	</body>
 </html>
-
-<style>
-	.category-tag {
-		display: inline-block;
-		background: rgba(var(--gray-light), 0.8);
-		padding: 0.15em 0.6em;
-		border-radius: 4px;
-		font-size: 0.75em;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: rgb(var(--gray));
-		margin-bottom: 0.4em;
-	}
-	.desc {
-		font-size: 0.85em;
-		color: rgb(var(--gray));
-		margin: 0;
-	}
-</style>

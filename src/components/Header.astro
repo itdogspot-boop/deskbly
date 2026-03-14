@@ -2,102 +2,122 @@
 import HeaderLink from './HeaderLink.astro';
 ---
 
-<header>
-	<nav>
-		<h2><a href="/">🖥️ Deskbly</a></h2>
+<header class="site-header">
+	<div class="header-inner">
+		<div class="logo">
+			<a href="/">
+				<span class="logo-icon">◈</span>
+				<span class="logo-text">Deskbly</span>
+			</a>
+		</div>
 		<button class="menu-toggle" aria-label="Toggle menu">☰</button>
-		<div class="nav-links">
+		<nav class="main-nav">
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/category/desks">Desks</HeaderLink>
 			<HeaderLink href="/category/chairs">Chairs</HeaderLink>
 			<HeaderLink href="/category/accessories">Accessories</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
-	</nav>
+			<HeaderLink href="/about">About Us</HeaderLink>
+			<HeaderLink href="/contact">Contact</HeaderLink>
+		</nav>
+	</div>
 </header>
 
 <script>
 	const toggle = document.querySelector('.menu-toggle');
-	const navLinks = document.querySelector('.nav-links');
-	if (toggle && navLinks) {
+	const nav = document.querySelector('.main-nav');
+	if (toggle && nav) {
 		toggle.addEventListener('click', () => {
-			navLinks.classList.toggle('open');
+			nav.classList.toggle('open');
 		});
 	}
 </script>
 
 <style>
-	header {
-		margin: 0;
-		padding: 0 1em;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+	.site-header {
+		background: #0f172a;
+		padding: 0;
 		position: sticky;
 		top: 0;
 		z-index: 100;
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 	}
-	h2 {
-		margin: 0;
-		font-size: 1.2em;
-	}
-	h2 a,
-	h2 a.active {
-		text-decoration: none;
-		color: rgb(var(--black));
-	}
-	nav {
+	.header-inner {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: 0 1.5em;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: 960px;
-		margin: 0 auto;
+		height: 64px;
 	}
-	.nav-links {
+	.logo a {
 		display: flex;
-	}
-	.nav-links a {
-		padding: 1em 0.7em;
-		color: rgb(var(--black));
-		border-bottom: 3px solid transparent;
+		align-items: center;
+		gap: 0.5em;
 		text-decoration: none;
-		font-size: 0.95em;
-		font-weight: 600;
+		color: white;
 	}
-	.nav-links a.active {
-		border-bottom-color: var(--accent);
-		color: var(--accent);
+	.logo-icon {
+		font-size: 1.8em;
+		color: #38bdf8;
+		line-height: 1;
 	}
-	.nav-links a:hover {
-		color: var(--accent);
+	.logo-text {
+		font-size: 1.4em;
+		font-weight: 800;
+		letter-spacing: -0.02em;
+	}
+	.main-nav {
+		display: flex;
+		align-items: center;
+		gap: 0.3em;
+	}
+	.main-nav :global(a) {
+		color: rgba(255, 255, 255, 0.75);
+		text-decoration: none;
+		padding: 0.5em 0.9em;
+		font-size: 0.92em;
+		font-weight: 500;
+		border-radius: 6px;
+		transition: all 0.2s;
+	}
+	.main-nav :global(a:hover),
+	.main-nav :global(a.active) {
+		color: white;
+		background: rgba(255, 255, 255, 0.1);
 	}
 	.menu-toggle {
 		display: none;
 		background: none;
 		border: none;
+		color: white;
 		font-size: 1.5em;
 		cursor: pointer;
 		padding: 0.5em;
 	}
-	@media (max-width: 720px) {
+	@media (max-width: 800px) {
 		.menu-toggle {
 			display: block;
 		}
-		.nav-links {
+		.main-nav {
 			display: none;
 			position: absolute;
 			top: 100%;
 			left: 0;
 			right: 0;
-			background: white;
+			background: #0f172a;
 			flex-direction: column;
-			box-shadow: 0 4px 12px rgba(var(--black), 10%);
+			padding: 1em;
+			gap: 0.3em;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 		}
-		.nav-links.open {
+		.main-nav.open {
 			display: flex;
 		}
-		.nav-links a {
-			padding: 0.8em 1.5em;
-			border-bottom: 1px solid rgba(var(--gray-light), 1);
+		.main-nav :global(a) {
+			width: 100%;
+			text-align: center;
+			padding: 0.8em;
 		}
 	}
 </style>
