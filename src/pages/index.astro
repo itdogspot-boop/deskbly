@@ -6,6 +6,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
+import heroImage from '../assets/blog-placeholder-1.jpg';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -19,13 +20,20 @@ const posts = (await getCollection('blog')).sort(
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section class="hero">
+		
+		<section class="hero-banner">
+			<div class="hero-overlay"></div>
+			<div class="hero-content">
 				<h1>Your Desk. Done Right.</h1>
 				<p>Honest reviews, no fluff buying guides, and setup ideas for your home office. We test the gear so you don't waste money.</p>
-				<a href="/blog" class="cta">Browse All Reviews →</a>
-			</section>
+				<div class="hero-buttons">
+					<a href="/blog" class="btn btn-primary">Browse Reviews</a>
+					<a href="/about" class="btn btn-outline">About Us</a>
+				</div>
+			</div>
+		</section>
 
+		<main>
 			<section class="categories">
 				<a href="/category/desks">🖥️ Desks</a>
 				<a href="/category/chairs">🪑 Chairs</a>
@@ -58,3 +66,87 @@ const posts = (await getCollection('blog')).sort(
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero-banner {
+		position: relative;
+		height: 420px;
+		background-image: url('https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1600&q=80');
+		background-size: cover;
+		background-position: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+	.hero-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+	}
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		max-width: 700px;
+		padding: 2em;
+	}
+	.hero-content h1 {
+		color: white;
+		font-size: 3em;
+		margin-bottom: 0.4em;
+		letter-spacing: -0.02em;
+	}
+	.hero-content p {
+		color: rgba(255, 255, 255, 0.85);
+		font-size: 1.2em;
+		margin-bottom: 1.5em;
+		line-height: 1.6;
+	}
+	.hero-buttons {
+		display: flex;
+		gap: 1em;
+		justify-content: center;
+	}
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.8em 1.8em;
+		border-radius: 10px;
+		font-weight: 700;
+		text-decoration: none;
+		font-size: 1em;
+		transition: all 0.2s;
+	}
+	.btn-primary {
+		background: #38bdf8;
+		color: #0f172a !important;
+	}
+	.btn-primary:hover {
+		background: #7dd3fc;
+		transform: translateY(-2px);
+	}
+	.btn-outline {
+		background: transparent;
+		color: white !important;
+		border: 2px solid rgba(255, 255, 255, 0.5);
+	}
+	.btn-outline:hover {
+		border-color: white;
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	@media (max-width: 720px) {
+		.hero-banner {
+			height: 350px;
+		}
+		.hero-content h1 {
+			font-size: 2em;
+		}
+		.hero-content p {
+			font-size: 1em;
+		}
+		.hero-buttons {
+			flex-direction: column;
+		}
+	}
+</style>
