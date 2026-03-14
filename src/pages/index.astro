@@ -6,7 +6,6 @@ import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 import { getCollection } from 'astro:content';
-import heroImage from '../assets/blog-placeholder-1.jpg';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -21,6 +20,7 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		
+		<!-- Hero Section -->
 		<section class="hero-banner">
 			<div class="hero-overlay"></div>
 			<div class="hero-content">
@@ -34,14 +34,59 @@ const posts = (await getCollection('blog')).sort(
 		</section>
 
 		<main>
-			<section class="categories">
-				<a href="/category/desks">🖥️ Desks</a>
-				<a href="/category/chairs">🪑 Chairs</a>
-				<a href="/category/accessories">⌨️ Accessories</a>
+			<!-- Categories -->
+			<section class="home-categories">
+				<h2>Browse by Category</h2>
+				<div class="category-grid">
+					<a href="/category/desks" class="cat-card">
+						<span class="cat-icon">🖥️</span>
+						<h3>Desks</h3>
+						<p>Standing desks, sit-stand, and regular office desks for every budget.</p>
+						<span class="cat-link">View Desks →</span>
+					</a>
+					<a href="/category/chairs" class="cat-card">
+						<span class="cat-icon">🪑</span>
+						<h3>Chairs</h3>
+						<p>Ergonomic chairs from budget to premium. Your back will thank you.</p>
+						<span class="cat-link">View Chairs →</span>
+					</a>
+					<a href="/category/accessories" class="cat-card">
+						<span class="cat-icon">⌨️</span>
+						<h3>Accessories</h3>
+						<p>Keyboards, monitors, monitor arms, cable management, and more.</p>
+						<span class="cat-link">View Accessories →</span>
+					</a>
+				</div>
 			</section>
 
-			<section>
-				<h2>Latest Reviews</h2>
+			<!-- Why Choose Us -->
+			<section class="why-section">
+				<h2>Why Trust Deskbly?</h2>
+				<div class="why-grid">
+					<div class="why-card">
+						<span class="why-icon">🔍</span>
+						<h3>Real Research</h3>
+						<p>We spend hours comparing specs, reading reviews, and testing products so you don't have to.</p>
+					</div>
+					<div class="why-card">
+						<span class="why-icon">💰</span>
+						<h3>Honest Pricing</h3>
+						<p>We tell you what's worth the money and what's not. No inflated rankings.</p>
+					</div>
+					<div class="why-card">
+						<span class="why-icon">🤝</span>
+						<h3>Affiliate Free</h3>
+						<p>We may earn commissions on links, but it never influences our recommendations.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Latest Reviews -->
+			<section class="latest-section">
+				<div class="section-header">
+					<h2>Latest Reviews</h2>
+					<a href="/blog" class="view-all">View All →</a>
+				</div>
 				<ul class="post-grid">
 					{posts.map((post) => (
 						<li>
@@ -62,16 +107,24 @@ const posts = (await getCollection('blog')).sort(
 					))}
 				</ul>
 			</section>
+
+			<!-- CTA Section -->
+			<section class="cta-section">
+				<h2>Ready to Build Your Dream Setup?</h2>
+				<p>Check out our complete guide to building a professional home office on any budget.</p>
+				<a href="/blog/home-office-setup-under-500" class="btn btn-primary">See Setup Guide →</a>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
 
 <style>
+	/* Hero */
 	.hero-banner {
 		position: relative;
-		height: 420px;
-		background-image: url('https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1600&q=80');
+		height: 520px;
+		background-image: url('https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1920&q=80');
 		background-size: cover;
 		background-position: center;
 		display: flex;
@@ -82,24 +135,24 @@ const posts = (await getCollection('blog')).sort(
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+		background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.65) 100%);
 	}
 	.hero-content {
 		position: relative;
 		z-index: 1;
-		max-width: 700px;
+		max-width: 750px;
 		padding: 2em;
 	}
 	.hero-content h1 {
 		color: white;
-		font-size: 3em;
+		font-size: 3.5em;
 		margin-bottom: 0.4em;
 		letter-spacing: -0.02em;
 	}
 	.hero-content p {
 		color: rgba(255, 255, 255, 0.85);
-		font-size: 1.2em;
-		margin-bottom: 1.5em;
+		font-size: 1.25em;
+		margin-bottom: 1.8em;
 		line-height: 1.6;
 	}
 	.hero-buttons {
@@ -110,11 +163,11 @@ const posts = (await getCollection('blog')).sort(
 	.btn {
 		display: inline-flex;
 		align-items: center;
-		padding: 0.8em 1.8em;
-		border-radius: 10px;
+		padding: 0.9em 2em;
+		border-radius: 12px;
 		font-weight: 700;
 		text-decoration: none;
-		font-size: 1em;
+		font-size: 1.05em;
 		transition: all 0.2s;
 	}
 	.btn-primary {
@@ -135,15 +188,149 @@ const posts = (await getCollection('blog')).sort(
 		background: rgba(255, 255, 255, 0.1);
 	}
 
-	@media (max-width: 720px) {
+	/* Categories */
+	.home-categories {
+		padding: 3em 0;
+	}
+	.home-categories h2 {
+		text-align: center;
+		margin-bottom: 1.5em;
+	}
+	.category-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5em;
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 0 1em;
+	}
+	.cat-card {
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 16px;
+		padding: 1.8em 1.5em;
+		text-decoration: none;
+		color: inherit;
+		transition: all 0.25s;
+		text-align: center;
+	}
+	.cat-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+		border-color: #38bdf8;
+	}
+	.cat-icon {
+		font-size: 2.5em;
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	.cat-card h3 {
+		margin: 0 0 0.5em 0;
+		font-size: 1.3em;
+	}
+	.cat-card p {
+		color: #64748b;
+		font-size: 0.9em;
+		margin: 0 0 1em 0;
+		line-height: 1.5;
+	}
+	.cat-link {
+		color: #38bdf8;
+		font-weight: 600;
+		font-size: 0.9em;
+	}
+
+	/* Why Section */
+	.why-section {
+		background: #f1f5f9;
+		padding: 3.5em 1em;
+		margin: 2em 0;
+	}
+	.why-section h2 {
+		text-align: center;
+		margin-bottom: 2em;
+	}
+	.why-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 2em;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+	.why-card {
+		text-align: center;
+	}
+	.why-icon {
+		font-size: 2.5em;
+		display: block;
+		margin-bottom: 0.5em;
+	}
+	.why-card h3 {
+		font-size: 1.15em;
+		margin-bottom: 0.5em;
+	}
+	.why-card p {
+		color: #64748b;
+		font-size: 0.9em;
+		margin: 0;
+		line-height: 1.5;
+	}
+
+	/* Latest Section */
+	.latest-section {
+		padding: 2em 0;
+	}
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5em;
+		padding: 0 1em;
+	}
+	.section-header h2 {
+		margin: 0;
+	}
+	.view-all {
+		color: #38bdf8;
+		font-weight: 600;
+		text-decoration: none;
+	}
+	.view-all:hover {
+		color: #0ea5e9;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+		color: white;
+		text-align: center;
+		padding: 4em 2em;
+		margin: 3em 0 0 0;
+		border-radius: 20px;
+	}
+	.cta-section h2 {
+		color: white;
+		margin-bottom: 0.5em;
+	}
+	.cta-section p {
+		color: rgba(255, 255, 255, 0.7);
+		margin-bottom: 1.5em;
+		font-size: 1.1em;
+	}
+
+	/* Responsive */
+	@media (max-width: 800px) {
 		.hero-banner {
-			height: 350px;
+			height: 450px;
 		}
 		.hero-content h1 {
-			font-size: 2em;
+			font-size: 2.5em;
 		}
 		.hero-content p {
-			font-size: 1em;
+			font-size: 1.1em;
+		}
+		.category-grid, .why-grid {
+			grid-template-columns: 1fr;
 		}
 		.hero-buttons {
 			flex-direction: column;
