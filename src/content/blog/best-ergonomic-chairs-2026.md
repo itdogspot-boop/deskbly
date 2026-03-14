@@ -2,7 +2,7 @@
 title: "Best Ergonomic Office Chairs (2026)"
 description: "Your chair matters more than your desk. Here are the best ergonomic chairs across every budget - from $200 to $1,500."
 pubDate: "Mar 12 2026"
-heroImage: "https://picsum.photos/800/400?random=2"
+heroImage: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800"
 category: "chairs"
 ---
 
