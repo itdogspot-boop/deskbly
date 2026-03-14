@@ -2,7 +2,7 @@
 title: "Best Desk Mats for Home Office (2026)"
 description: "A desk mat defines your workspace and protects your desk. Here are the best desk mats for any setup."
 pubDate: "Feb 28 2026"
-heroImage: "https://picsum.photos/seed/desk1/800/400"
+heroImage: "https://picsum.photos/800/400?random=3"
 category: "accessories"
 ---
 
