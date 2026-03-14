@@ -43,8 +43,6 @@ We wrote a whole article on the [best standing desks under $300](/blog/best-stan
 
 The trade-off: it's a single motor, so it's slower than dual-motor desks. But at this price, that's a minor inconvenience.
 
-[Check Price on Amazon](https://amzn.to/example)
-
 ---
 
 ### Chair: Ticova Ergonomic ($249)
@@ -60,8 +58,6 @@ Why the Ticova:
 
 The trade-off: 250 lb weight limit. If you're heavier, look at the HON Ignition 2.0 or save for a used Herman Miller.
 
-[Check Price on Amazon](https://amzn/to/example)
-
 ---
 
 ### Monitor Light Bar: Quntis ($30)
@@ -76,8 +72,6 @@ Why the Quntis:
 
 This is one of those upgrades you didn't know you needed. Once you have it, you'll wonder how you worked without it.
 
-[Check Price on Amazon](https://amzn.to/example)
-
 ---
 
 ### Cable Management: $15
@@ -88,8 +82,6 @@ Two simple additions that make your setup look professional:
 2. **Velcro ties** (~$5) — bundle cables together neatly
 
 This takes 20 minutes to install and transforms your setup from "messy cables everywhere" to "clean and professional."
-
-[Check Cable Management Kit on Amazon](https://amzn.to/example)
 
 ---
 
@@ -104,8 +96,6 @@ Why a desk mat?
 
 Get one at least 36" wide and 17" deep. Anything smaller and it's not worth it.
 
-[Check Desk Mat on Amazon](https://amzn.to/example)
-
 ---
 
 ### Power Strip: Surge Protector with USB ($20)
@@ -117,8 +107,6 @@ You need a power strip anyway. Get one with USB ports built in:
 - **Surge protection** — protects your electronics from power spikes
 
 This is functional, not flashy. But it's essential.
-
-[Check Power Strip on Amazon](https://amzn.to/example)
 
 ---
 
