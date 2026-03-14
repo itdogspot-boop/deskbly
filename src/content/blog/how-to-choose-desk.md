@@ -2,7 +2,7 @@
 title: "How to Choose the Right Desk for Your Needs (2026)"
 description: "Not sure what desk you need? This guide breaks down everything to consider when buying a desk for your home office."
 pubDate: "Mar 03 2026"
-heroImage: "/images/blog-placeholder-1.jpg"
+heroImage: "https://images.unsplash.com/photo-1593642632823-8f78536788c6?w=800&q=80"
 category: "desks"
 ---
 
@@ -201,7 +201,6 @@ Still unsure? Here's a quick decision tree:
 - You have corner space to use
 - You need dual workstations
 - You want maximum surface area
-- You work with multiple screens
 
 ### Choose a compact desk if:
 - You have a small room
@@ -217,28 +216,24 @@ FlexiSpot E7 Basic ($279)
 - Dual motor
 - 355 lb capacity
 - 4 memory presets
-- [View on Amazon](/blog/best-standing-desks-under-300/)
 
 ### Best Budget Standing Desk
 Fezibo 48" ($159)
 - Single motor
 - Good value
 - Includes desktop
-- [View on Amazon](/blog/best-standing-desks-under-300/)
 
 ### Best L-Shaped Desk
 FUTULAJ L-Shaped ($189)
 - Reversible design
 - Extra monitor shelf
 - Under $200
-- [View on Amazon](/blog/best-l-shaped-desks/)
 
 ### Best Compact Desk
 FEZIBO Small Standing Desk ($129)
 - 40" width
 - Electric standing
 - Fits anywhere
-- [View on Amazon](/blog/desk-for-small-spaces/)
 
 ---
 

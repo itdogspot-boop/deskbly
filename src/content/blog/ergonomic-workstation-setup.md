@@ -2,7 +2,7 @@
 title: "How to Set Up an Ergonomic Workstation (2026)"
 description: "Your chair and desk are just the start. Here's how to set up a complete ergonomic workstation that protects your body."
 pubDate: "Mar 01 2026"
-heroImage: "/images/blog-placeholder-3.jpg"
+heroImage: "https://images.unsplash.com/photo-1587213811865-46c38e7617e6?w=800&q=80"
 category: "chairs"
 ---
 
@@ -181,7 +181,7 @@ Even with perfect ergonomics, sitting too long is bad for you.
 
 1. **Neck rolls** — Slowly roll your head in a circle, 5 times each direction
 2. **Shoulder shrugs** — Raise shoulders to ears, hold 3 seconds, release. Repeat 10 times.
-3. **Wrist circles** — Rotate wrists in circles, 10 times each direction
+3. **Wrist circles** — rotate wrists in circles, 10 times each direction
 4. **Chest opener** — Clasp hands behind back, squeeze shoulder blades together
 
 ---

@@ -2,7 +2,7 @@
 title: "Best Standing Desks Under $300 (2026)"
 description: "We compared the top budget standing desks so you don't have to. Here are the 7 that are actually worth buying."
 pubDate: "Mar 13 2026"
-heroImage: "/images/blog-placeholder-1.jpg"
+heroImage: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=800&q=80"
 category: "desks"
 ---
 
