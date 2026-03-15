@@ -2,7 +2,7 @@
 title: "Best Keyboards for Home Office (2026)"
 description: "The best keyboards for productivity."
 pubDate: "Mar 05 2026"
-heroImage: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800"
+heroImage: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=800"
 category: "accessories"
 ---
 
