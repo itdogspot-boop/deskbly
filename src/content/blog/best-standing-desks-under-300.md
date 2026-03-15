@@ -2,7 +2,7 @@
 title: "Best Standing Desks Under $300 (2026)"
 description: "The best standing desks under $300 that actually work."
 pubDate: "Mar 13 2026"
-heroImage: "https://picsum.photos/seed/desk12/800/400"
+heroImage: "https://picsum.photos/seed/standingdesk/800/400"
 category: "desks"
 ---
 

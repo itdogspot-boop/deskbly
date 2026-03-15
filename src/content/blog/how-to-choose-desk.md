@@ -2,7 +2,7 @@
 title: "How to Choose the Right Desk for Your Home Office"
 description: "A complete guide to choosing the perfect desk for your space and needs."
 pubDate: "Mar 11 2026"
-heroImage: "https://picsum.photos/seed/desk12/800/400"
+heroImage: "https://picsum.photos/seed/choosedesk/800/400"
 category: "desks"
 ---
 

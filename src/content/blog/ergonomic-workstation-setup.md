@@ -2,7 +2,7 @@
 title: "Ergonomic Workstation Setup Guide (2026)"
 description: "How to set up an ergonomic workstation that protects your back and boosts productivity."
 pubDate: "Mar 09 2026"
-heroImage: "https://picsum.photos/seed/chair55/800/400"
+heroImage: "https://picsum.photos/seed/ergonomic1/800/400"
 category: "chairs"
 ---
 

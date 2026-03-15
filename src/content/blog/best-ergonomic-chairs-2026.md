@@ -2,7 +2,7 @@
 title: "Best Ergonomic Office Chairs (2026)"
 description: "Your chair matters more than your desk. Here are the best ergonomic chairs across every budget."
 pubDate: "Mar 12 2026"
-heroImage: "https://picsum.photos/seed/chair55/800/400"
+heroImage: "https://picsum.photos/seed/ergochair/800/400"
 category: "chairs"
 ---
 
