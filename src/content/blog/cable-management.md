@@ -2,7 +2,7 @@
 title: "Best Cable Management Solutions (2026)"
 description: "Tired of cables everywhere? These cable management solutions will clean up your desk in minutes."
 pubDate: "Feb 27 2026"
-heroImage: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=800"
+heroImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800"
 category: "accessories"
 ---
 

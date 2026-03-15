@@ -2,7 +2,7 @@
 title: "Best Desk Mats for Home Office (2026)"
 description: "The best desk mats for any setup."
 pubDate: "Feb 28 2026"
-heroImage: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=800"
+heroImage: "https://images.unsplash.com/photo-1544457070-4cd773b4d71e?auto=format&fit=crop&w=800"
 category: "accessories"
 ---
 
