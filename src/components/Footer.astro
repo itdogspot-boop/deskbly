@@ -30,7 +30,7 @@ const today = new Date();
 			<div class="footer-newsletter">
 				<h4>📬 Stay Updated</h4>
 				<p>Get the latest deals and reviews delivered to your inbox. No spam, unsubscribe anytime.</p>
-				<form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing! (Newsletter coming soon)');">
+				<form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Subscribed!'; this.querySelector('input').value='';">
 					<input type="email" placeholder="Your email address" required />
 					<button type="submit">Subscribe</button>
 				</form>

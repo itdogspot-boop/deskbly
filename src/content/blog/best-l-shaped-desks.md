@@ -2,7 +2,7 @@
 title: "7 Best L-Shaped Desks for Home Office (2026)"
 description: "The best L-shaped desks for more workspace."
 pubDate: "Mar 10 2026"
-heroImage: "https://images.unsplash.com/photo-1593642702821-8dd525c153e2?auto=format&fit=crop&w=800"
+heroImage: "https://images.unsplash.com/photo-1593642532973-d31b6557fa68?auto=format&fit=crop&w=800"
 category: "desks"
 ---
 

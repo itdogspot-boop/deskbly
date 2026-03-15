@@ -2,7 +2,7 @@
 title: "Best Office Chairs Under $200 (2026)"
 description: "You don't need to spend $1,000 for a good chair. Here are the best office chairs under $200 that won't destroy your back."
 pubDate: "Mar 08 2026"
-heroImage: "https://images.unsplash.com/photo-1519947486511-4639940be434?auto=format&fit=crop&w=800"
+heroImage: "https://images.unsplash.com/photo-1589384267710-7a170981ca78?auto=format&fit=crop&w=800"
 category: "chairs"
 ---
 
