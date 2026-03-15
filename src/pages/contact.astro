@@ -99,8 +99,8 @@ import Header from '../components/Header.astro';
       });
       
       if (response.ok) {
-        form.style.display = 'none';
         messageDiv.style.display = 'block';
+        messageDiv.scrollIntoView({ behavior: 'smooth' });
         form.reset();
       } else {
         alert('Something went wrong. Please try again.');
