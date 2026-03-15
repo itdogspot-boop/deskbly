@@ -2,7 +2,7 @@
 title: "7 Best L-Shaped Desks for Home Office (2026)"
 description: "Need more workspace? Here are the best L-shaped desks that maximize your corner space and boost productivity."
 pubDate: "Mar 10 2026"
-heroImage: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800"
+heroImage: "https://picsum.photos/800/400"
 category: "desks"
 ---
 
