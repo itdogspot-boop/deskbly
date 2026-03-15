@@ -2,7 +2,7 @@
 title: "Best Office Chairs for Back Pain (2026)"
 description: "Suffering from back pain? These ergonomic chairs are designed to relieve back pain and improve your posture."
 pubDate: "Mar 02 2026"
-heroImage: "https://picsum.photos/800/400"
+heroImage: "https://picsum.photos/seed/chair55/800/400"
 category: "chairs"
 ---
 

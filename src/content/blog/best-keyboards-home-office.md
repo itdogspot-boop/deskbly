@@ -2,7 +2,7 @@
 title: "Best Keyboards for Home Office (2026)"
 description: "A great keyboard makes working from home better. Here are the best keyboards for productivity, from budget to premium."
 pubDate: "Mar 05 2026"
-heroImage: "https://picsum.photos/800/400"
+heroImage: "https://picsum.photos/seed/office77/800/400"
 category: "accessories"
 ---
 

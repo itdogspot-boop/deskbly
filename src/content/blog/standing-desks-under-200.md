@@ -2,7 +2,7 @@
 title: "Best Standing Desks Under $200 (2026)"
 description: "On a tight budget? Here are the best standing desks you can get for under $200 that actually work."
 pubDate: "Mar 04 2026"
-heroImage: "https://picsum.photos/800/400"
+heroImage: "https://picsum.photos/seed/desk12/800/400"
 category: "desks"
 ---
 
