@@ -1,240 +1,48 @@
 ---
+// src/pages/about.astro
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
-
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title="About Us — Deskbly" description="Learn more about Deskbly and our mission to help you find the best home office gear." />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="page-header">
-				<h1>About Deskbly</h1>
-				<p>Helping you build the perfect home office, one honest review at a time.</p>
-			</section>
+  <head>
+    <BaseHead
+      title="About Deskbly"
+      description="Deskbly is a home office blog sharing ergonomic tips, honest gear reviews, and setup guides to help you work comfortably from home."
+    />
+    <style>
+      .page { max-width: 720px; margin: 3rem auto; padding: 0 1.5rem; }
+      h1 { font-size: 2rem; font-weight: 800; color: #111; margin-bottom: 0.5rem; }
+      .subtitle { color: #666; font-size: 1.1rem; margin-bottom: 2rem; }
+      p { line-height: 1.8; color: #444; margin-bottom: 1.25rem; }
+      h2 { font-size: 1.3rem; font-weight: 700; color: #111; margin-top: 2rem; }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="page">
+      <h1>About Deskbly</h1>
+      <p class="subtitle">Your guide to a healthier, more comfortable home office.</p>
 
-			<div class="about-content">
-				<div class="about-section">
-					<h2>Our Story</h2>
-					<p>
-						Deskbly started because we were tired of the same old "review" sites. 
-						You know the ones — they list 20 products with rewritten Amazon descriptions, 
-						call it a "best of" list, and slap affiliate links everywhere.
-					</p>
-					<p>
-						We wanted something different. Real reviews from people who actually use the products. 
-						Honest opinions that don't shy away from pointing out flaws. And most importantly — 
-						recommendations you can trust.
-					</p>
-				</div>
+      <p>
+        Deskbly was created for people who spend long hours working from home and want to do it without wrecking their back, neck, or wrists. We cover everything from ergonomic chair recommendations to cable management tips — practical advice you can actually use.
+      </p>
 
-				<div class="about-section">
-					<h2>Who We Are</h2>
-					<p>
-						We're a team of remote workers, home office enthusiasts, and product reviewers 
-						who spend way too much time researching desks, chairs, and accessories.
-					</p>
-					<p>
-						We've worked from home for years — some of us in tiny apartments, others in 
-						dedicated home offices. We've bought too many chairs, built too many desks, 
-						and learned from too many mistakes.
-					</p>
-					<p>
-						Now we share what we've learned so you don't have to make the same mistakes.
-					</p>
-				</div>
+      <h2>What we cover</h2>
+      <p>
+        Every article on Deskbly is focused on one thing: helping you build a home office that works for your body. That means honest gear reviews, step-by-step setup guides, and tips backed by ergonomic principles — not just what looks good on a desk tour.
+      </p>
 
-				<div class="about-section">
-					<h2>What We Do</h2>
-					<p>At Deskbly, we:</p>
-					<ul>
-						<li><strong>Research thoroughly</strong> — We spend hours comparing specs, reading user reviews, and testing products ourselves</li>
-						<li><strong>Give honest opinions</strong> — If a product is garbage, we say so — even if it means we don't earn a commission</li>
-						<li><strong>Focus on value</strong> — We believe the best product isn't always the most expensive</li>
-						<li><strong>Keep it real</strong> — No sponsored posts, no paid reviews, no fluff</li>
-					</ul>
-				</div>
+      <h2>Affiliate disclosure</h2>
+      <p>
+        Some articles on Deskbly contain affiliate links, meaning we may earn a small commission if you buy through them — at no extra cost to you. This helps keep the site running. We only recommend products we genuinely believe in. See our full <a href="/disclaimer/">disclaimer here</a>.
+      </p>
 
-				<div class="about-section">
-					<h2>Our Promise to You</h2>
-					<p>
-						Here's what you can always expect from Deskbly:
-					</p>
-					<div class="promise-grid">
-						<div class="promise-item">
-							<span class="promise-icon">🔍</span>
-							<h3>Honest Reviews</h3>
-							<p>We tell you what's good and what's not. No fluff, no filler.</p>
-						</div>
-						<div class="promise-item">
-							<span class="promise-icon">💰</span>
-							<h3>Value First</h3>
-							<p>We recommend products at every price point — not just the expensive ones.</p>
-						</div>
-						<div class="promise-item">
-							<span class="promise-icon">🤝</span>
-							<h3>Transparency</h3>
-							<p>Some links are affiliate links. We explain this clearly. It never affects our recommendations.</p>
-						</div>
-						<div class="promise-item">
-							<span class="promise-icon">🎯</span>
-							<h3>Your Best Interest</h3>
-							<p>If we wouldn't buy it, we won't recommend it. Simple as that.</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="about-section">
-					<h2>How We Make Money</h2>
-					<p>
-						Deskbly is supported by affiliate commissions. When you click a product link and make a purchase, 
-						we may earn a small commission — at no extra cost to you.
-					</p>
-					<p>
-						<strong>Here's our promise:</strong> Affiliate commissions <em>never</em> influence our recommendations. 
-						If a product is terrible, we won't recommend it — even if it pays well. We'd rather lose a 
-						commission than lose your trust.
-					</p>
-					<p>
-						We're transparent about this because we believe you deserve to know how we operate.
-					</p>
-				</div>
-
-				<div class="about-section">
-					<h2>Get in Touch</h2>
-					<p>
-						Have questions? Want to work together? Found an error in our reviews?
-						We'd love to hear from you.
-					</p>
-					<p>
-						📧 <strong>Email:</strong> <a href="mailto:hello@deskbly.com">hello@deskbly.com</a>
-					</p>
-					<p>
-						We typically respond within 24-48 hours.
-					</p>
-				</div>
-
-				<div class="about-section cta-section">
-					<h2>Ready to Build Your Perfect Setup?</h2>
-					<p>Check out our latest reviews and buying guides.</p>
-					<div class="cta-buttons">
-						<a href="/blog" class="btn btn-primary">Browse Reviews</a>
-						<a href="/contact" class="btn btn-outline">Contact Us</a>
-					</div>
-				</div>
-			</div>
-		</main>
-		<Footer />
-	</body>
+      <h2>Get in touch</h2>
+      <p>
+        Have a question, topic suggestion, or just want to say hi? <a href="/contact/">Contact us here.</a>
+      </p>
+    </main>
+    <Footer />
+  </body>
 </html>
-
-<style>
-	.about-content {
-		max-width: 800px;
-		margin: 0 auto;
-	}
-	.about-section {
-		background: white;
-		padding: 2em;
-		border-radius: 16px;
-		border: 1px solid #e2e8f0;
-		margin-bottom: 1.5em;
-	}
-	.about-section h2 {
-		margin-top: 0;
-		color: #0f172a;
-	}
-	.about-section p {
-		color: #64748b;
-		line-height: 1.7;
-	}
-	.about-section ul {
-		color: #64748b;
-		line-height: 1.8;
-		padding-left: 1.2em;
-	}
-	.about-section li {
-		margin-bottom: 0.5em;
-	}
-	.about-section a {
-		color: #38bdf8;
-	}
-	.promise-grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1.5em;
-		margin-top: 1.5em;
-	}
-	.promise-item {
-		background: #f8fafc;
-		padding: 1.5em;
-		border-radius: 12px;
-	}
-	.promise-icon {
-		font-size: 2em;
-		display: block;
-		margin-bottom: 0.3em;
-	}
-	.promise-item h3 {
-		font-size: 1em;
-		margin: 0 0 0.3em 0;
-		color: #0f172a;
-	}
-	.promise-item p {
-		font-size: 0.9em;
-		margin: 0;
-	}
-	.cta-section {
-		text-align: center;
-		background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-		color: white;
-	}
-	.cta-section h2 {
-		color: white;
-	}
-	.cta-section p {
-		color: rgba(255, 255, 255, 0.7);
-		margin-bottom: 1.5em;
-	}
-	.cta-buttons {
-		display: flex;
-		gap: 1em;
-		justify-content: center;
-	}
-	.btn {
-		display: inline-flex;
-		padding: 0.8em 1.8em;
-		border-radius: 10px;
-		font-weight: 700;
-		text-decoration: none;
-		transition: all 0.2s;
-	}
-	.btn-primary {
-		background: #38bdf8;
-		color: #0f172a !important;
-	}
-	.btn-primary:hover {
-		background: #7dd3fc;
-	}
-	.btn-outline {
-		background: transparent;
-		color: white !important;
-		border: 2px solid rgba(255, 255, 255, 0.5);
-	}
-	.btn-outline:hover {
-		border-color: white;
-		background: rgba(255, 255, 255, 0.1);
-	}
-	@media (max-width: 600px) {
-		.promise-grid {
-			grid-template-columns: 1fr;
-		}
-		.cta-buttons {
-			flex-direction: column;
-		}
-	}
-</style>
