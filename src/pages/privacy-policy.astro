@@ -1,64 +1,54 @@
 ---
+// src/pages/privacy-policy.astro
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const updated = 'March 2025';
 ---
-
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title="Privacy Policy — Deskbly" description="How Deskbly collects, uses, and protects your data." />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Privacy Policy</h1>
-			<p><em>Last updated: March 13, 2026</em></p>
+  <head>
+    <BaseHead title="Privacy Policy" description="Privacy Policy for Deskbly.com" />
+    <style>
+      .page { max-width: 720px; margin: 3rem auto; padding: 0 1.5rem; }
+      h1 { font-size: 2rem; font-weight: 800; color: #111; }
+      h2 { font-size: 1.2rem; font-weight: 700; color: #111; margin-top: 2rem; }
+      p, li { line-height: 1.8; color: #444; }
+      ul { padding-left: 1.5rem; }
+      .updated { color: #999; font-size: 0.9rem; margin-bottom: 2rem; }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="page">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: {updated}</p>
 
-			<p>At Deskbly ("we", "us", or "our"), we respect your privacy. This Privacy Policy explains how we collect, use, and protect information when you visit deskbly.com.</p>
+      <p>Deskbly ("we", "us", or "our") operates deskbly.com. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our site.</p>
 
-			<h2>Information We Collect</h2>
-			<p>We collect minimal information:</p>
-			<ul>
-				<li><strong>Analytics data:</strong> We use Google Analytics to understand how visitors use our site. This includes pages visited, time on site, device type, and approximate location (country/city level). This data is anonymous.</li>
-				<li><strong>Cookies:</strong> Google Analytics and our affiliate partners may place cookies on your device to track visits and referrals.</li>
-			</ul>
+      <h2>Information We Collect</h2>
+      <p>We may collect non-personally identifiable information such as browser type, pages visited, and time spent on the site through analytics tools (e.g. Google Analytics).</p>
 
-			<h2>How We Use Your Information</h2>
-			<ul>
-				<li>To understand which content is most useful to our readers</li>
-				<li>To improve our site and articles</li>
-				<li>To track affiliate referrals (so we can earn commissions when you buy products through our links)</li>
-			</ul>
+      <h2>Cookies</h2>
+      <p>We use cookies to improve your experience on our site. Cookies are small files stored on your device. Third-party services such as Google AdSense may also place cookies on your device for advertising purposes. You can instruct your browser to refuse all cookies or indicate when a cookie is being sent.</p>
 
-			<h2>Affiliate Links</h2>
-			<p>Deskbly participates in affiliate programs, including the Amazon Associates Program. When you click a product link and make a purchase, we may earn a commission at no additional cost to you. These commissions help us keep the site running.</p>
+      <h2>Google AdSense & Advertising</h2>
+      <p>We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to our site or other sites. You can opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google Ad Settings</a>.</p>
 
-			<h2>Third-Party Services</h2>
-			<p>We use the following third-party services:</p>
-			<ul>
-				<li><strong>Google Analytics</strong> — for website analytics</li>
-				<li><strong>Cloudflare</strong> — for hosting and CDN</li>
-				<li><strong>Amazon Associates</strong> — for affiliate links</li>
-			</ul>
-			<p>Each of these services has their own privacy policies.</p>
+      <h2>Affiliate Links</h2>
+      <p>Some links on this site are affiliate links. Clicking these links and making a purchase may result in us receiving a commission. We only recommend products we believe in. See our <a href="/disclaimer/">Disclaimer</a> for more details.</p>
 
-			<h2>Your Choices</h2>
-			<ul>
-				<li>You can disable cookies in your browser settings</li>
-				<li>You can use an ad blocker to prevent tracking</li>
-				<li>You can opt out of Google Analytics using Google's opt-out browser add-on</li>
-			</ul>
+      <h2>Third-Party Links</h2>
+      <p>Our site may contain links to external websites. We are not responsible for the privacy practices or content of those sites.</p>
 
-			<h2>Children's Privacy</h2>
-			<p>Our site is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+      <h2>Children's Privacy</h2>
+      <p>Our site is not directed at children under 13. We do not knowingly collect personal data from children.</p>
 
-			<h2>Changes to This Policy</h2>
-			<p>We may update this Privacy Policy from time to time. We will post any changes on this page with an updated date.</p>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date.</p>
 
-			<h2>Contact</h2>
-			<p>If you have questions about this Privacy Policy, contact us at <a href="mailto:hello@deskbly.com">hello@deskbly.com</a>.</p>
-		</main>
-		<Footer />
-	</body>
+      <h2>Contact</h2>
+      <p>If you have questions about this policy, please <a href="/contact/">contact us</a>.</p>
+    </main>
+    <Footer />
+  </body>
 </html>
