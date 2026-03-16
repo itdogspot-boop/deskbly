@@ -1,0 +1,45 @@
+---
+// src/pages/disclaimer.astro
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="en">
+  <head>
+    <BaseHead title="Disclaimer" description="Affiliate and earnings disclaimer for Deskbly.com" />
+    <style>
+      .page { max-width: 720px; margin: 3rem auto; padding: 0 1.5rem; }
+      h1 { font-size: 2rem; font-weight: 800; color: #111; }
+      h2 { font-size: 1.2rem; font-weight: 700; color: #111; margin-top: 2rem; }
+      p { line-height: 1.8; color: #444; }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="page">
+      <h1>Disclaimer</h1>
+
+      <h2>Affiliate Disclosure</h2>
+      <p>
+        Deskbly participates in affiliate marketing programs. This means that some links on this website are affiliate links — if you click on one and make a purchase, we may receive a small commission at no additional cost to you.
+      </p>
+      <p>
+        We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
+      </p>
+
+      <h2>Opinions</h2>
+      <p>
+        All opinions expressed on Deskbly are our own. We are not paid to write positive reviews. Affiliate relationships do not influence our editorial content or product recommendations.
+      </p>
+
+      <h2>Accuracy</h2>
+      <p>
+        We make every effort to ensure the information on this site is accurate and up to date. However, we make no warranties about the completeness or accuracy of any content. Prices and product availability may change without notice.
+      </p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this disclaimer, please <a href="/contact/">contact us</a>.</p>
+    </main>
+    <Footer />
+  </body>
+</html>
