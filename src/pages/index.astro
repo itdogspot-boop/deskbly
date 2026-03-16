@@ -1,536 +1,236 @@
 ---
-import { Image } from 'astro:assets';
+// src/pages/index.astro
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 
-const allPosts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-const posts = allPosts.slice(0, 6); // Only show 6 articles
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+).slice(0, 6);
 ---
-
-<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={`${SITE_TITLE} — Best Home Office Desks, Chairs & Setup Guides`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		
-		<!-- Hero Section -->
-		<section class="hero-banner">
-			<div class="hero-overlay"></div>
-			<div class="hero-content">
-				<span class="hero-badge">🚀 Updated for 2026</span>
-				<h1>Your Desk. <br/>Done Right.</h1>
-				<p>Honest reviews, no fluff buying guides, and setup ideas for your home office. We test the gear so you don't waste money.</p>
-				<div class="hero-buttons">
-					<a href="/blog" class="btn btn-primary">Browse All Reviews</a>
-					<a href="/about" class="btn btn-outline">About Us</a>
-				</div>
-				<div class="hero-stats">
-					<div class="stat">
-						<span class="stat-num">{allPosts.length}+</span>
-						<span class="stat-label">Reviews</span>
-					</div>
-					<div class="stat">
-						<span class="stat-num">3</span>
-						<span class="stat-label">Categories</span>
-					</div>
-					<div class="stat">
-						<span class="stat-num">$2K</span>
-						<span class="stat-label">Tested</span>
-					</div>
-				</div>
-			</div>
-		</section>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: system-ui, sans-serif; color: #333; }
 
-		<main>
-			<!-- Categories -->
-			<section class="home-categories">
-				<div class="section-header">
-					<h2>Browse by Category</h2>
-					<p>Find exactly what you need for your home office</p>
-				</div>
-				<div class="category-grid">
-					<a href="/category/desks" class="cat-card">
-						<span class="cat-icon">🖥️</span>
-						<h3>Desks</h3>
-						<p>Standing desks, sit-stand, and regular office desks for every budget.</p>
-						<span class="cat-link">View Desks →</span>
-					</a>
-					<a href="/category/chairs" class="cat-card">
-						<span class="cat-icon">🪑</span>
-						<h3>Chairs</h3>
-						<p>Ergonomic chairs from budget to premium. Your back will thank you.</p>
-						<span class="cat-link">View Chairs →</span>
-					</a>
-					<a href="/category/accessories" class="cat-card">
-						<span class="cat-icon">⌨️</span>
-						<h3>Accessories</h3>
-						<p>Keyboards, monitors, monitor arms, cable management, and more.</p>
-						<span class="cat-link">View Accessories →</span>
-					</a>
-				</div>
-			</section>
+      /* Hero */
+      .hero {
+        background: #f8fffe;
+        border-bottom: 1px solid #eee;
+        padding: 4rem 1.5rem;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: #111;
+        line-height: 1.2;
+        margin: 0 0 1rem;
+      }
+      .hero h1 span { color: #059669; }
+      .hero p {
+        font-size: 1.1rem;
+        color: #555;
+        max-width: 520px;
+        margin: 0 auto 2rem;
+        line-height: 1.7;
+      }
+      .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+      .btn-primary {
+        background: #059669;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: background 0.2s;
+      }
+      .btn-primary:hover { background: #047857; }
+      .btn-secondary {
+        background: #fff;
+        color: #111;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 0.95rem;
+        border: 1px solid #ddd;
+      }
 
-			<!-- Featured Articles -->
-			<section class="featured-section">
-				<div class="section-header">
-					<h2>Latest Reviews</h2>
-					<p>The most up-to-date buying guides for your home office</p>
-				</div>
-				<div class="featured-grid">
-					{posts.map((post, index) => (
-						<article class={`featured-card ${index === 0 ? 'featured-main' : ''}`}>
-							<a href={`/blog/${post.id}/`}>
-								<div class="card-image">
-									{post.data.heroImage && (
-										<img src={post.data.heroImage} alt={post.data.title} />
-									)}
-									<span class="card-category">{post.data.category || 'review'}</span>
-								</div>
-								<div class="card-content">
-									<h3>{post.data.title}</h3>
-									<p class="card-desc">{post.data.description}</p>
-									<div class="card-meta">
-										<span class="card-date"><FormattedDate date={post.data.pubDate} /></span>
-										<span class="card-read">Read More →</span>
-									</div>
-								</div>
-							</a>
-						</article>
-					))}
-				</div>
-				<div class="view-all-wrapper">
-					<a href="/blog" class="view-all-btn">View All {allPosts.length} Reviews →</a>
-				</div>
-			</section>
+      /* Trust bar */
+      .trust-bar {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .trust-bar span { font-size: 0.85rem; color: #666; }
 
-			<!-- Why Choose Us -->
-			<section class="why-section">
-				<div class="section-header">
-					<h2>Why Trust Deskbly?</h2>
-					<p>We're different from other review sites</p>
-				</div>
-				<div class="why-grid">
-					<div class="why-card">
-						<span class="why-icon">🔍</span>
-						<h3>Real Research</h3>
-						<p>We spend hours comparing specs, reading reviews, and testing products so you don't have to.</p>
-					</div>
-					<div class="why-card">
-						<span class="why-icon">💰</span>
-						<h3>Honest Pricing</h3>
-						<p>We tell you what's worth the money and what's not. No inflated rankings.</p>
-					</div>
-					<div class="why-card">
-						<span class="why-icon">🤝</span>
-						<h3>Affiliate Free</h3>
-						<p>We may earn commissions on links, but it never influences our recommendations.</p>
-					</div>
-				</div>
-			</section>
+      /* Posts */
+      .posts-section {
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+      }
+      .posts-section h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: #111;
+      }
+      .post-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      .post-card {
+        border: 1px solid #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition: box-shadow 0.2s;
+        display: block;
+      }
+      .post-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+      .post-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+      .post-card-img-placeholder {
+        width: 100%;
+        height: 180px;
+        background: #f0fdf4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+      }
+      .post-card-body { padding: 1.25rem; }
+      .post-card-date { font-size: 0.8rem; color: #999; margin-bottom: 0.5rem; }
+      .post-card h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0 0 0.5rem;
+        color: #111;
+        line-height: 1.4;
+      }
+      .post-card p {
+        font-size: 0.875rem;
+        color: #666;
+        margin: 0;
+        line-height: 1.6;
+      }
 
-			<!-- CTA Section -->
-			<section class="cta-section">
-				<h2>Ready to Build Your Dream Setup?</h2>
-				<p>Check out our complete guide to building a professional home office on any budget.</p>
-				<a href="/blog/home-office-setup-under-500" class="btn btn-primary">See Setup Guide →</a>
-			</section>
-		</main>
-		<Footer />
-	</body>
+      /* Categories */
+      .categories {
+        background: #f8f9fa;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+        padding: 2.5rem 1.5rem;
+        margin-bottom: 0;
+      }
+      .categories-inner {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .categories h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 1.25rem;
+        color: #111;
+      }
+      .cat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+      }
+      .cat-card {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 10px;
+        padding: 1.25rem 1rem;
+        text-align: center;
+        text-decoration: none;
+        color: #333;
+        transition: border-color 0.2s;
+      }
+      .cat-card:hover { border-color: #059669; }
+      .cat-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+      .cat-card span { font-size: 0.875rem; font-weight: 600; color: #111; }
+    </style>
+  </head>
+  <body>
+    <Header />
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Work From Home<br>Without the <span>Back Pain</span></h1>
+      <p>Ergonomic home office tips, honest gear reviews, and setup guides — so you can work comfortably all day.</p>
+      <div class="hero-ctas">
+        <a href="/blog/" class="btn-primary">Read the Blog →</a>
+        <a href="/about/" class="btn-secondary">About Deskbly</a>
+      </div>
+    </section>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+      <span>✓ Honest reviews</span>
+      <span>✓ Ergonomist-backed tips</span>
+      <span>✓ No fluff, just what works</span>
+    </div>
+
+    <!-- Latest posts -->
+    <section class="posts-section">
+      <h2>Latest Articles</h2>
+      {posts.length === 0 ? (
+        <p style="color:#999">No posts yet — check back soon!</p>
+      ) : (
+        <div class="post-grid">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}/`} class="post-card">
+              {post.data.heroImage
+                ? <img src={post.data.heroImage} alt={post.data.title} />
+                : <div class="post-card-img-placeholder">📝</div>
+              }
+              <div class="post-card-body">
+                <div class="post-card-date">
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+      <div class="categories-inner">
+        <h2>Browse by Topic</h2>
+        <div class="cat-grid">
+          <a href="/blog/" class="cat-card"><div class="icon">🖥️</div><span>Desk Setups</span></a>
+          <a href="/blog/" class="cat-card"><div class="icon">💺</div><span>Ergonomics</span></a>
+          <a href="/blog/" class="cat-card"><div class="icon">⌨️</div><span>Gear Reviews</span></a>
+          <a href="/blog/" class="cat-card"><div class="icon">💡</div><span>Lighting Tips</span></a>
+          <a href="/blog/" class="cat-card"><div class="icon">📋</div><span>Setup Guides</span></a>
+          <a href="/blog/" class="cat-card"><div class="icon">💰</div><span>Budget Picks</span></a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
 </html>
-
-<style>
-	/* Hero */
-	.hero-banner {
-		position: relative;
-		min-height: 100vh;
-		background-image: url('https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1920&q=80');
-		background-size: cover;
-		background-position: center;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.hero-overlay {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.75) 50%, rgba(15, 23, 42, 0.6) 100%);
-	}
-	.hero-content {
-		position: relative;
-		z-index: 1;
-		max-width: 800px;
-		padding: 2em 1.5em;
-		text-align: center;
-	}
-	.hero-badge {
-		display: inline-block;
-		background: rgba(56, 189, 248, 0.2);
-		color: #38bdf8;
-		padding: 0.4em 1em;
-		border-radius: 999px;
-		font-size: 0.85em;
-		font-weight: 600;
-		margin-bottom: 1em;
-		border: 1px solid rgba(56, 189, 248, 0.3);
-	}
-	.hero-content h1 {
-		color: white;
-		font-size: 2.5em;
-		margin-bottom: 0.2em;
-		letter-spacing: -0.03em;
-		line-height: 1.1;
-	}
-	.hero-content p {
-		color: rgba(255, 255, 255, 0.8);
-		font-size: 1.1em;
-		margin-bottom: 1em;
-		line-height: 1.5;
-		max-width: 500px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.hero-buttons {
-		display: flex;
-		gap: 0.8em;
-		justify-content: center;
-		margin-bottom: 1.5em;
-	}
-	.btn {
-		display: inline-flex;
-		align-items: center;
-		padding: 0.9em 2em;
-		border-radius: 12px;
-		font-weight: 700;
-		text-decoration: none;
-		font-size: 1.05em;
-		transition: all 0.25s;
-	}
-	.btn-primary {
-		background: #38bdf8;
-		color: #0f172a !important;
-	}
-	.btn-primary:hover {
-		background: #7dd3fc;
-		transform: translateY(-2px);
-		box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
-	}
-	.btn-outline {
-		background: transparent;
-		color: white !important;
-		border: 2px solid rgba(255, 255, 255, 0.4);
-	}
-	.btn-outline:hover {
-		border-color: white;
-		background: rgba(255, 255, 255, 0.1);
-	}
-	.hero-stats {
-		display: flex;
-		justify-content: center;
-		gap: 2em;
-	}
-	.stat {
-		text-align: center;
-	}
-	.stat-num {
-		display: block;
-		font-size: 2em;
-		font-weight: 800;
-		color: #38bdf8;
-	}
-	.stat-label {
-		font-size: 0.85em;
-		color: rgba(255, 255, 255, 0.6);
-	}
-
-	/* Section Headers */
-	.section-header {
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.section-header h2 {
-		font-size: 1.5em;
-		margin-bottom: 0.2em;
-	}
-	.section-header p {
-		color: #64748b;
-		font-size: 0.95em;
-	}
-
-	/* Categories */
-	.home-categories {
-		padding: 0.5em 1em;
-	}
-	.category-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1em;
-		max-width: 1000px;
-		margin: 0 auto;
-	}
-	.cat-card {
-		background: white;
-		border: 1px solid #e2e8f0;
-		border-radius: 20px;
-		padding: 2em 1.5em;
-		text-decoration: none;
-		color: inherit;
-		transition: all 0.3s;
-		text-align: center;
-	}
-	.cat-card:hover {
-		transform: translateY(-6px);
-		box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-		border-color: #38bdf8;
-	}
-	.cat-icon {
-		font-size: 3em;
-		display: block;
-		margin-bottom: 0.5em;
-	}
-	.cat-card h3 {
-		margin: 0 0 0.5em 0;
-		font-size: 1.35em;
-	}
-	.cat-card p {
-		color: #64748b;
-		font-size: 0.95em;
-		margin: 0 0 1em 0;
-		line-height: 1.5;
-	}
-	.cat-link {
-		color: #38bdf8;
-		font-weight: 600;
-		font-size: 0.9em;
-	}
-
-	/* Featured Section */
-	.featured-section {
-		padding: 0.5em 1em 1em;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-	.featured-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 1.5em;
-	}
-	.featured-card {
-		background: white;
-		border-radius: 16px;
-		overflow: hidden;
-		box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
-		transition: all 0.3s;
-		border: 1px solid #e2e8f0;
-	}
-	.featured-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
-	}
-	.featured-card a {
-		text-decoration: none;
-		color: inherit;
-	}
-	.card-image {
-		position: relative;
-		height: 180px;
-		overflow: hidden;
-	}
-	.card-image img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-	.card-category {
-		position: absolute;
-		top: 12px;
-		left: 12px;
-		background: rgba(15, 23, 42, 0.85);
-		color: white;
-		padding: 0.3em 0.8em;
-		border-radius: 6px;
-		font-size: 0.75em;
-		font-weight: 600;
-		text-transform: uppercase;
-	}
-	.card-content {
-		padding: 1.2em;
-	}
-	.card-content h3 {
-		font-size: 1.05em;
-		margin: 0 0 0.5em 0;
-		line-height: 1.4;
-	}
-	.card-desc {
-		color: #64748b;
-		font-size: 0.85em;
-		margin: 0 0 1em 0;
-		line-height: 1.5;
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-	}
-	.card-meta {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: 0.8em;
-	}
-	.card-date {
-		color: #94a3b8;
-	}
-	.card-read {
-		color: #38bdf8;
-		font-weight: 600;
-	}
-	.view-all-wrapper {
-		text-align: center;
-		margin-top: 2em;
-	}
-	.view-all-btn {
-		display: inline-block;
-		padding: 0.8em 2em;
-		background: #0f172a;
-		color: white !important;
-		text-decoration: none;
-		border-radius: 10px;
-		font-weight: 600;
-		transition: all 0.2s;
-	}
-	.view-all-btn:hover {
-		background: #1e293b;
-		transform: translateY(-2px);
-	}
-
-	/* Why Section */
-	.why-section {
-		background: #f8fafc;
-		padding: 1em 1em;
-	}
-	.why-grid {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2em;
-		max-width: 900px;
-		margin: 0 auto;
-	}
-	.why-card {
-		text-align: center;
-		background: white;
-		padding: 2em;
-		border-radius: 16px;
-		border: 1px solid #e2e8f0;
-	}
-	.why-icon {
-		font-size: 2.5em;
-		display: block;
-		margin-bottom: 0.5em;
-	}
-	.why-card h3 {
-		font-size: 1.15em;
-		margin-bottom: 0.5em;
-	}
-	.why-card p {
-		color: #64748b;
-		font-size: 0.9em;
-		margin: 0;
-		line-height: 1.5;
-	}
-
-	/* Newsletter CTA */
-	.newsletter-cta {
-		padding: 4em 1em;
-		background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-	}
-	.cta-content {
-		max-width: 500px;
-		margin: 0 auto;
-		text-align: center;
-	}
-	.cta-content h2 {
-		color: white;
-		margin-bottom: 0.5em;
-	}
-	.cta-content p {
-		color: rgba(255, 255, 255, 0.7);
-		margin-bottom: 1.5em;
-	}
-	.cta-form {
-		display: flex;
-		gap: 0.5em;
-	}
-	.cta-form input {
-		flex: 1;
-		padding: 0.8em 1em;
-		border: none;
-		border-radius: 10px;
-		font-size: 1em;
-	}
-	.cta-form button {
-		padding: 0.8em 1.5em;
-		background: #38bdf8;
-		color: #0f172a;
-		border: none;
-		border-radius: 10px;
-		font-weight: 700;
-		cursor: pointer;
-		transition: background 0.2s;
-	}
-	.cta-form button:hover {
-		background: #7dd3fc;
-	}
-	.subscribed-message {
-		background: #22c55e;
-		color: white;
-		padding: 1em 2em;
-		border-radius: 10px;
-		font-weight: 600;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5em;
-	}
-	.subscribed-message span {
-		font-size: 1.2em;
-	}
-
-	/* CTA Section */
-	.cta-section {
-		background: #0f172a;
-		color: white;
-		text-align: center;
-		padding: 2em 2em;
-		margin-top: 2em;
-	}
-	.cta-section h2 {
-		color: white;
-		margin-bottom: 0.5em;
-	}
-	.cta-section p {
-		color: rgba(255, 255, 255, 0.7);
-		margin-bottom: 1.5em;
-		font-size: 1.1em;
-	}
-
-	/* Responsive */
-	@media (max-width: 900px) {
-		.hero-content h1 { font-size: 3em; }
-		.category-grid, .featured-grid, .why-grid { grid-template-columns: 1fr; }
-		.hero-stats { gap: 2em; }
-	}
-	@media (max-width: 600px) {
-		.hero-content h1 { font-size: 2.2em; }
-		.hero-content p { font-size: 1.1em; }
-		.hero-buttons { flex-direction: column; }
-		.cta-form { flex-direction: column; }
-	}
-</style>
